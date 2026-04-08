@@ -1,0 +1,31 @@
+{
+  "name": "judo-bracket",
+  "private": true,
+  "packageManager": "npm@10.1.0",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "dev": "npm run dev --workspace @judo-bracket/web",
+    "lint": "npm run lint --workspaces --if-present",
+    "prisma:migrate": "npx -y node@20.19.0 ./node_modules/prisma/build/index.js migrate dev --config ./prisma.config.ts",
+    "prisma:seed": "npm run seed --workspace @judo-bracket/api",
+    "prisma:generate": "npx -y node@20.19.0 ./node_modules/prisma/build/index.js generate --config ./prisma.config.ts",
+    "prisma:validate": "npx -y node@20.19.0 ./node_modules/prisma/build/index.js validate --config ./prisma.config.ts",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "@types/node": "^24.0.0",
+    "prisma": "^7.6.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

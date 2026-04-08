@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@judo-bracket/config": ["packages/config/src/index.ts"],
+      "@judo-bracket/types": ["packages/types/src/index.ts"],
+      "@judo-bracket/utils": ["packages/utils/src/index.ts"],
+      "@judo-bracket/ui": ["packages/ui/src/index.ts"]
+    }
+  }
+}
