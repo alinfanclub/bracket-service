@@ -10,7 +10,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
+    "build": "npm run build --workspace @judo-bracket/api",
+    "start": "npm start --workspace @judo-bracket/api",
     "dev": "npm run dev --workspace @judo-bracket/web",
     "lint": "npm run lint --workspaces --if-present",
     "prisma:migrate": "npx -y node@20.19.0 ./node_modules/prisma/build/index.js migrate dev --config ./prisma.config.ts",
