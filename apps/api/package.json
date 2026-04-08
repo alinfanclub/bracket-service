@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc -p tsconfig.json && esbuild src/main.ts --bundle --platform=node --format=esm --outfile=dist/index.js --external:pg --external:@prisma/client",
+    "build": "tsc -p tsconfig.json",
     "dev": "node --watch --import tsx ./src/main.ts",
-    "start": "node ./dist/index.js",
+    "start": "cd dist && node apps/api/src/main.js",
     "lint": "tsc -p tsconfig.json --noEmit",
     "seed": "tsx ./prisma/seed.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
@@ -26,7 +26,6 @@
     "rxjs": "^7.8.2"
   },
   "devDependencies": {
-    "esbuild": "^0.25.0",
     "tsx": "^4.20.3"
   }
 }
