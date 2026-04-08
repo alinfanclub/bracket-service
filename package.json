@@ -10,7 +10,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build --workspace @judo-bracket/api",
+    "build": "npm run build --workspaces --if-present && npm run build --workspace @judo-bracket/api",
     "start": "npm start --workspace @judo-bracket/api",
     "dev": "npm run dev --workspace @judo-bracket/web",
     "lint": "npm run lint --workspaces --if-present",
