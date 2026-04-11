@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "echo 'Using tsx, no build needed'",
+    "build": "npx -y node@20.19.0 ./node_modules/prisma/build/index.js generate --config ../../prisma.config.ts",
     "dev": "node --watch --import tsx ./src/main.ts",
     "start": "node --import tsx ./src/main.ts",
     "lint": "tsc -p tsconfig.json --noEmit",
