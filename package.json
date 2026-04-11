@@ -21,11 +21,13 @@
     "test": "npm run test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present"
   },
+  "dependencies": {
+    "prisma": "^7.6.0"
+  },
   "devDependencies": {
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "@types/node": "^24.0.0",
-    "prisma": "^7.6.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   }
