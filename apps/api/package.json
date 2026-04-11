@@ -26,5 +26,7 @@
     "rxjs": "^7.8.2",
     "tsx": "^4.20.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "prisma": "^7.6.0"
+  }
 }
