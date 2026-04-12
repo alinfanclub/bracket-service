@@ -9,7 +9,7 @@ import type { UserRole } from "@judo-bracket/types";
 import { UserAvatar } from "./user-avatar";
 
 export function LandingNav() {
-  const { isSignedIn } = useAuth();
+  const { isSignedIn, isLoaded } = useAuth();
 
   return (
     <nav style={{
@@ -46,7 +46,22 @@ export function LandingNav() {
             </span>
           </Link>
 
-          {isSignedIn ? (
+          {!isLoaded ? (
+            <div style={{ display: "flex", gap: "12px" }}>
+              <div style={{
+                width: "80px",
+                height: "36px",
+                borderRadius: "8px",
+                background: "#f4f4f5"
+              }} />
+              <div style={{
+                width: "80px",
+                height: "36px",
+                borderRadius: "8px",
+                background: "#f4f4f5"
+              }} />
+            </div>
+          ) : isSignedIn ? (
             <LoggedInUser />
           ) : (
             <div style={{ display: "flex", gap: "12px" }}>
