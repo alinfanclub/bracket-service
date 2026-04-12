@@ -10,6 +10,8 @@ export default function SignInPage() {
       <div style={{ display: "flex", justifyContent: "center", padding: "40px 0" }}>
         <SignIn 
           routing="hash"
+          forceRedirectUrl="/auth/callback"
+          signUpUrl="/sign-up"
           appearance={{
             elements: {
               formButtonPrimary: "bg-blue-600 hover:bg-blue-700",
