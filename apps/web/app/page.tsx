@@ -61,7 +61,7 @@ export default function LandingPage() {
               물료로 시작하기
             </Link>
             <Link
-              href="/public/JUDO26"
+              href="/public/BSW2025"
               style={{
                 padding: "16px 32px",
                 borderRadius: "10px",

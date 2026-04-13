@@ -1,4 +1,4 @@
-import type { AthleteMatchHistoryRecord, PublicTournamentView } from "@judo-bracket/types";
+import type { AthleteMatchHistoryRecord, BracketRecord, PublicTournamentView } from "@judo-bracket/types";
 
 import { athleteHistoryDemo, publicTournamentDemo } from "./demo-data";
 
@@ -15,6 +15,33 @@ async function readJson<T>(path: string): Promise<RemoteResult<T>> {
   try {
     const response = await fetch(`${apiBaseUrl}${path}`, {
       cache: "no-store"
+    });
+
+    if (response.status === 404) {
+      return { status: "not_found" };
+    }
+
+    if (!response.ok) {
+      return { status: "error" };
+    }
+
+    return {
+      status: "success",
+      data: (await response.json()) as T
+    };
+  } catch {
+    return { status: "error" };
+  }
+}
+
+async function postJson<T>(path: string, token: string): Promise<RemoteResult<T>> {
+  try {
+    const response = await fetch(`${apiBaseUrl}${path}`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
     });
 
     if (response.status === 404) {
@@ -72,4 +99,8 @@ export function getCurrentAthleteId(): string | null {
   }
 
   return currentAthleteId;
+}
+
+export async function generateBracket(divisionId: string, token: string): Promise<RemoteResult<BracketRecord>> {
+  return postJson<BracketRecord>(`/brackets/divisions/${divisionId}/generate`, token);
 }
