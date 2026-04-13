@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import { RoleShell } from "@judo-bracket/ui";
 
+import { BracketTable } from "../../../components/bracket-table";
 import { DashboardCard } from "../../../components/dashboard-card";
 import { getPublicTournamentViewByCode } from "../../../lib/api";
 
@@ -38,21 +39,23 @@ export default async function PublicTournamentPage({ params }: { params: Promise
             ))}
           </ul>
         </DashboardCard>
-        <DashboardCard title="대진표 미리보기">
+        <DashboardCard title="대진표">
           <div style={{ display: "grid", gap: 12 }}>
             {data.divisions.map((division) => {
               const bracket = data.brackets.find((item) => item.divisionId === division.id);
+
               return (
-                <div key={division.id}>
-                  <strong>{division.name}</strong>
-                  <ul style={{ marginBottom: 0, paddingLeft: 18 }}>
-                    {(bracket?.matches ?? []).map((match) => (
-                      <li key={match.id}>
-                        R{match.roundNumber} M{match.matchNumber}: {match.homeAthleteName} vs {match.awayAthleteName} · {match.status}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <section key={division.id} style={{ display: "grid", gap: 12 }}>
+                  <div style={{ display: "grid", gap: 4 }}>
+                    <strong style={{ color: "var(--color-text-strong)", fontSize: 16 }}>{division.name}</strong>
+                    <span style={{ color: "var(--color-text-muted)", fontSize: 12 }}>
+                      {bracket
+                        ? `${bracket.bracketSize}강 · ${bracket.matches.length}경기`
+                        : "생성된 대진표 없음"}
+                    </span>
+                  </div>
+                  <BracketTable bracket={bracket} />
+                </section>
               );
             })}
           </div>
